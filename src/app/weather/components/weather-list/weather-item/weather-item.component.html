@@ -1,0 +1,29 @@
+<ng-container *ngIf="weather">
+  <nav routerLink="forecast/{{weather.zip}}">
+    <div class="card mb-2 multi">
+      <div class="card-header">{{weather.city}}</div>
+      <div class="card-body">
+        <div class="row g-0">
+          <div class="col-10">
+            <p class="card-text">Current conditions: {{weather.currentConditions}}</p>
+            <p class="card-text">Temperature: {{weather.currentTemperature | number: '1.0-0'}}</p>
+            <p class="card-text">Max today: {{weather.maxTemp | number: '1.0-0'}} - Min today: {{weather.minTemp |
+              number:
+              '1.0-0'}}</p>
+          </div>
+          <div class="col-2">
+            <img
+              class="w-100"
+              src="../../../../assets/{{(weather.currentConditions).toLowerCase()}}.png"
+            >
+          </div>
+        </div>
+        <button
+          type="button"
+          class="btn-close bg-transparent position-absolute top-0 end-0 m-2"
+          (click)="onRemove()"
+        ></button>
+      </div>
+    </div>
+  </nav>
+</ng-container>

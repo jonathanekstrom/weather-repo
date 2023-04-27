@@ -1,0 +1,65 @@
+<form #f="ngForm">
+  <input
+    class="form-control mb-2 no-radius"
+    ngModel
+    name="zip"
+    type="text"
+    placeholder="Enter a zip"
+    required
+    minlength="4"
+    maxlength="5"
+    pattern="\d*"
+  >
+
+  <input
+    class="form-control mb-2 no-radius"
+    ngModel
+    name="country"
+    #searchBox
+    (input)="onSearch(searchBox.value)"
+    type="text"
+    placeholder="Enter a country"
+    required
+    minLength="3"
+    maxLength="30"
+  />
+
+  <select
+    class="form-select mb-2 no-radius"
+    [(ngModel)]="selectedCountry"
+    name="selectedCountry"
+  >
+    <option
+      selected
+      disabled
+      value=""
+      *ngIf="f.controls['country'].value === ''"
+    >Search for a country</option>
+    <ng-container *ngIf="countries$ | async as countries">
+      <ng-container *ngFor="let country of countries">
+        <option [value]="country.alpha2">{{ country.name }} </option>
+      </ng-container>
+    </ng-container>
+  </select>
+
+  <app-add-location-button
+    [initialTemplate]="initialState"
+    [workingTemplate]="workingState"
+    [doneTemplate]="doneState"
+    [invalidForm]="f.invalid"
+    (onAddEvent)="onAdd()"
+  ></app-add-location-button>
+</form>
+
+<ng-template #initialState>
+  Add Location
+</ng-template>
+
+<ng-template #workingState>
+  <img
+    class="w-20"
+    src="https://github.com/alcfeoh/ng-advanced-workshop/raw/master/src/assets/loader.gif"
+  >
+</ng-template>
+
+<ng-template #doneState>Saved!</ng-template>

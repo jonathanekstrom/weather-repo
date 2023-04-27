@@ -1,22 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http'
 
-import { AddLocationComponent } from './components/add-location/add-location.component';
-import { LocationListComponent } from './components/location-list/location-list.component';
-import { LocationItemComponent } from './components/location-item/location-item.component';
-
-
+import { WeatherRoutingModule } from './weather-routing.module';
+import { WeatherListComponent } from './components/weather-list/weather-list.component';
+import { WeatherItemComponent } from './components/weather-list/weather-item/weather-item.component';
+import { WeatherForecastComponent } from './components/weather-forecast/weather-forecast.component';
+import { WeatherMainComponent } from './components/weather-main/weather-main.component'
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
-    AddLocationComponent,
-    LocationListComponent,
-    LocationItemComponent
+    WeatherListComponent,
+    WeatherItemComponent,
+    WeatherForecastComponent,
+    WeatherMainComponent,
   ],
   imports: [
     CommonModule,
-    HttpClientModule 
+    SharedModule,
+    WeatherRoutingModule,
+  ],
+  providers: [
+    
   ]
 })
 export class WeatherModule { }

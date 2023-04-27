@@ -1,0 +1,15 @@
+<ng-container *ngIf="weatherArr$ | async as weathers; else empty">
+  <ng-container *ngFor="let weather of weathers; let current = index">
+    <div class="row hand-on-hover">
+      <app-weather-item
+        [weather]="weather"
+        (removeWeatherEvent)="onRemove(current)"
+      ></app-weather-item>
+    </div>
+  </ng-container>
+</ng-container>
+
+
+<ng-template #empty>
+  <p>No weather available</p>
+</ng-template>

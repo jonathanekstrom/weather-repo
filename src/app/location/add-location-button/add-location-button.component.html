@@ -1,0 +1,8 @@
+<button
+  class="btn btn-primary w-100 no-radius"
+  type="submit"
+  (click)="onAdd()"
+  [disabled]="invalidForm || inSubmission"
+>
+  <ng-container *ngTemplateOutlet="currentTemplate"></ng-container>
+</button>

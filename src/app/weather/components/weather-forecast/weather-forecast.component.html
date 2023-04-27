@@ -1,0 +1,19 @@
+<ng-container *ngIf="forecasts$ | async as forecastArr">
+  <div class="card">
+    <div class="card-header">{{forecastArr[0].city}} ({{zip}})</div>
+    <div class="card-body">
+      <ng-container *ngFor="let forecast of forecastArr">
+        <div class="row">
+          <div class="col-9">
+            {{ forecast.dt | weekday }}: {{forecast.currentTemperature | number: '1.0-0'}} -
+            High: {{forecast.maxTemp | number: '1.0-0'}} -
+            Low: {{forecast.minTemp | number: '1.0-0'}}
+          </div>
+          <div class="col-3">
+            {{forecast.currentConditions}}
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,10 @@
+.multi {
+  -webkit-transition-property: transform; /* Safari */
+  -webkit-transition-duration: 0.2s; /* Safari */
+  transition-property: transform;
+  transition-duration: 0.2s;
+}
+
+.multi:hover {
+  transform: scale(1.05);
+}
